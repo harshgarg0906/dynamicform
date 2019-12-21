@@ -1,0 +1,21 @@
+<form [formGroup]="dynamicForm"  (ngSubmit)="onSubmit()">
+ 
+  <div>
+    <input formControlName="email">
+  </div>
+  <div formArrayName="phones">
+
+    <div *ngFor="let array of phoneForm.controls; let i=index"
+    [formGroupName]="i">
+
+    <input formControlName="area">
+    <input formControlName="prefix">
+    <input formControlName="line">
+
+    <button (click)="removePhone(i)" type="button">Delete</button>
+    </div>
+  </div>
+
+  <button (click)="addPhone()" type="button">Add Phone Number</button>
+  <button>Submit</button>
+</form>
